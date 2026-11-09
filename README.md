@@ -12,6 +12,8 @@ Máquina atacante: **Kali Linux 2026.3** · Víctima: **ColddBox Easy** (192.168
 > El hacking ético se practica solo con **autorización explícita**. Aprender estas técnicas sirve para
 > **defender** sistemas, no para atacarlos. No uses este conocimiento contra sistemas de terceros.
 
+> ⚠️ **Spoiler alert**: este writeup resuelve completa la máquina ColddBox: Easy. Si prefieres resolverla por tu cuenta primero, ¡no sigas leyendo! He difuminado las respuestas literales (contraseña y flag) para no regalar la solución: las técnicas y la metodología sí están al completo.
+
 ---
 
 ## 🛠️ Entorno utilizado
@@ -154,9 +156,9 @@ wpscan prueba las contraseñas una a una contra el formulario de login.
 
 **Paso 15 · Credenciales encontradas 🎉**
 ```
-[SUCCESS] - c0ldd / 9876543210
+[SUCCESS] - c0ldd / **********
 ```
-Contraseña débil + usuario filtrado = acceso garantizado. Lección para defensas: **limitar intentos de login y cuidar los mensajes de error**.
+Contraseña débil + usuario filtrado = acceso garantizado (estaba entre las primeras del diccionario, literalmente la secuencia de números ascendente 🙃). Lección para defensas: **limitar intentos de login y cuidar los mensajes de error**.
 
 ![success](img/15-credenciales-encontradas.png)
 
@@ -257,9 +259,9 @@ whoami
 **Paso 27 · Flag final 🏁**
 ```bash
 cd /root && cat root.txt
-→ wqFGZWxpY2lkYWRlcywgbcOhcXVpbmEgY29tcGxlZGFkYSE=
+→ ████████████████████████████████████████████
 ```
-Base64 → **"¡Felicidades, máquina completada!"** 
+El contenido se descifra con un simple `echo ... | base64 -d` → un mensaje de felicitación en español. 🎉 (Lo difumino para no estropear la experiencia a nadie que quiera resolverla 😉)
 
 ![flag](img/28-flag-root-txt.png)
 
